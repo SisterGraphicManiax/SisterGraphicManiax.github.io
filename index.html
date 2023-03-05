@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>軽量ウェブサイト</title>
+    <meta charset="utf-8">
+    <title>2048</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
+      .board {
+        width: 400px;
+        height: 400px;
+        margin: 0 auto;
+        border: 5px solid black;
+        background-color: #BBADA0;
+        display: flex;
+        flex-wrap: wrap;
       }
-      h1 {
-        font-size: 2rem;
+      
+      .tile {
+        width: calc(25% - 10px);
+        height: calc(25% - 10px);
+        margin: 5px;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
       }
+      
     </style>
   </head>
   <body>
-    <header>
-      <h1>軽量ウェブサイト</h1>
-    </header>
-    <section>
-      <p>軽量ウェブサイトは、高速な読み込み時間を実現します。</p>
-      <p>必要最低限のコンテンツを提供し、余計なファイルサイズを削減することにより、ユーザーエクスペリエンスを向上します。</p>
-    </section>
+    <div class="board">
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+      <div class="tile"></div>
+    </div>
   </body>
 </html>
