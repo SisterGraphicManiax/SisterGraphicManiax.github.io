@@ -1,13 +1,28 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>ソフト配布所</title>
-    <style>
-        body {
-            background-color: #ABFFD0;
-        }
-    </style>
+    <title>クイズゲーム</title>
 </head>
-   ソフト配布してます。anonfileで配布します。閉鎖したら残念無念だったってことで
+<body>
+    <h1>クイズゲーム：果物の色</h1>
+    <p>下記の果物のうち、黄色い果物はどれですか？</p>
+    <form>
+        <input type="radio" name="answer" id="apple" value="apple">
+        <label for="apple">りんご</label><br>
+        <input type="radio" name="answer" id="banana" value="banana">
+        <label for="banana">バナナ</label><br>
+    </form>
+    <button onclick="checkAnswer()">回答する</button>
+
+    <script>
+        function checkAnswer() {
+            let selected = document.querySelector('input[name="answer"]:checked');
+            if (selected && selected.value === "banana") {
+                alert("正解！");
+            } else {
+                alert("不正解。");
+            }
+        }
+    </script>
 </body>
 </html>
