@@ -1,28 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>クイズゲーム</title>
+    <title>スロットゲーム</title>
 </head>
 <body>
-    <h1>クイズゲーム：果物の色</h1>
-    <p>下記の果物のうち、黄色い果物はどれですか？</p>
-    <form>
-        <input type="radio" name="answer" id="apple" value="apple">
-        <label for="apple">りんご</label><br>
-        <input type="radio" name="answer" id="banana" value="banana">
-        <label for="banana">バナナ</label><br>
-    </form>
-    <button onclick="checkAnswer()">回答する</button>
+    <h1>スロットゲーム</h1>
+    <div id="slots">
+        <div id="slot1">7</div>
+        <div id="slot2">7</div>
+        <div id="slot3">7</div>
+    </div>
+    <button onclick="spin()">スピン</button>
 
     <script>
-        function checkAnswer() {
-            let selected = document.querySelector('input[name="answer"]:checked');
-            if (selected && selected.value === "banana") {
-                alert("正解！");
+        function spin() {
+            let slot1Value = Math.floor(Math.random() * 9); // 0〜8のランダムな数字を生成
+            let slot2Value = Math.floor(Math.random() * 9);
+            let slot3Value = Math.floor(Math.random() * 9);
+
+            let slot1 = document.getElementById("slot1");
+            let slot2 = document.getElementById("slot2");
+            let slot3 = document.getElementById("slot3");
+
+            slot1.innerHTML = slot1Value;
+            slot2.innerHTML = slot2Value;
+            slot3.innerHTML = slot3Value;
+
+            if (slot1Value === slot2Value && slot2Value === slot3Value) {
+                alert("JACKPOT!!");
             } else {
-                alert("不正解。");
+                alert("もう一度挑戦してみてください！");
             }
         }
     </script>
 </body>
 </html>
+
