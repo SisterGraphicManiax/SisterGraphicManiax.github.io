@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>スロットゲーム</title>
+    <title>メモリマッチングゲーム</title>
+    <style>
+        .card {
+            background-color: white;
+            border: 1px solid black;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px;
+            padding: 20px;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body>
-    <h1>スロットゲーム</h1>
-    <div id="slots">
-        <div id="slot1">7</div>
-        <div id="slot2">7</div>
-        <div id="slot3">7</div>
-    </div>
-    <button onclick="spin()">スピン</button>
+<body onLoad="init()">
+    <h1>メモリマッチングゲーム</h1>
+    <p>カードをオープンして、ペアを見つけよう。</p>
+    <div id="cards"></div>
 
     <script>
-        function spin() {
-            let slot1Value = Math.floor(Math.random() * 9); // 0〜8のランダムな数字を生成
-            let slot2Value = Math.floor(Math.random() * 9);
-            let slot3Value = Math.floor(Math.random() * 9);
+        let cards = [1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6]; // 12枚のカード
+        let flippedCards = []; // 1つ目と2つ目のカードを一時的に保持する
+        let matchedCards = []; // ペアを作ったカードを保持する
 
-            let slot1 = document.getElementById("slot1");
-            let slot2 = document.getElementById("slot2");
-            let slot3 = document.getElementById("slot3");
+        function init() {
+            cards.sort(() => Math.random() - 0.5); // カードをシャッフルする
+            let cardsHtml = "";
+            for (let i = 0; i < cards.length; i++) {
+                cardsHtml += '<div class="card" onclick="flipCard(this)" data-value="' + cards[i] + '"></div>';
+            }
+            document.getElementById("cards").innerHTML = cardsHtml;
+        }
 
-            slot1.innerHTML = slot1Value;
-            slot2.innerHTML = slot2Value;
-            slot3.innerHTML = slot3Value;
+        function flipCard(card) {
+            if (flippedCards.length < 2 && !matchedCards.includes(card)) {
+                card.innerHTML = card.getAttribute("data-value"); // カードの値を表示する
+                flippedCards.push(card); // カードを格納する
+                if (flippedCards.length === 2) {
+                    setTimeout(checkCards, 1000); // 1秒後にカードをチェックする
+                }
+            }
+        }
 
-            if (slot1Value === slot2Value && slot2Value === slot3Value) {
-                alert("よかったやん。");
-         
+        function checkCards() {
+            let value1 = flippedCards[0].getAttribute("data-value");
+            let value2 = flippedCards[1].getAttribute("data-value");
+            if (value1 === value2) {
+                matchedCards.push(flippedCards[0], flippedCards[1]); // ペアを作ったカードをmatchedCardsに格納
+            } else {
+                flippedCards[0].innerHTML = ""; // カードを裏返す
+                flippedCards[1].innerHTML = "";
+            }
+            flippedCards = []; // flippedCardsをリセット
+            if (matchedCards.length === 12) {
+                alert("おめでとう！ゲームクリア！");
+                init();
             }
         }
     </script>
 </body>
 </html>
-
