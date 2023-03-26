@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>オンライン投票サイト</title>
+</head>
+<body>
+    <h1>次の選挙についての投票</h1>
+    <form action="vote.php" method="post">
+        <label for="name">名前:</label>
+        <input type="text" id="name" name="name"><br>
+        <label for="age">年齢:</label>
+        <input type="number" id="age" name="age"><br>
+        <label for="candidate">投票する候補者:</label>
+        <select id="candidate" name="candidate">
+            <option value="candidate1">候補者1</option>
+            <option value="candidate2">候補者2</option>
+            <option value="candidate3">候補者3</option>
+        </select><br>
+        <button type="submit">投票する</button>
+    </form>
+</body>
+</html>
