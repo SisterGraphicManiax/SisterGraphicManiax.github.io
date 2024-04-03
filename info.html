@@ -49,9 +49,15 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     background-color: #fff;
+    animation: fadeIn 2s ease-in-out forwards;
   }
-  .website-content.show {
-    display: block;
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>
 </head>
@@ -65,15 +71,16 @@
 </div>
 
 <script>
-  // ロゴ画像表示後、2秒後にウェブサイトを表示
-  window.onload = function() {
-    setTimeout(function() {
-      var logoContainer = document.querySelector('.logo-container');
-      var websiteContent = document.querySelector('.website-content');
-      logoContainer.style.opacity = '0';
-      websiteContent.classList.add('show');
-    }, 2000);
-  };
+  // ウェブサイトの表示
+  var websiteContent = document.querySelector('.website-content');
+  websiteContent.style.display = 'none';
+
+  // ロゴ画像のフェードアウト後、ウェブサイトを表示
+  setTimeout(function() {
+    var logoContainer = document.querySelector('.logo-container');
+    logoContainer.style.opacity = '0';
+    websiteContent.style.display = 'block';
+  }, 4000);
 </script>
 
 </body>
