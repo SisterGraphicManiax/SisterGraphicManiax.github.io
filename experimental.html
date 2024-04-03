@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>妖怪黒歴史たんまりシスターズ インフォメーション</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f0f0f0;
+  }
+  .logo-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    z-index: 9999;
+    animation: fadeInOut 4s ease-in-out;
+  }
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .logo {
+    max-width: 300px;
+    max-height: 200px;
+    animation: fadeInOut 4s ease-in-out;
+  }
+  .website-content {
+    display: none;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #fff;
+    animation: fadeIn 2s ease-in-out forwards;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="logo-container">
+  <img class="logo" src="circle.png" alt="サークルのロゴ">
+</div>
+<div class="website-content">
+  <h1>妖怪黒歴史たんまりシスターズ（studio monster black history sisters）</h1>
+  <p>手のひら事故物件１人で活動しているサークルです。<br>ひそひそとイラストの制作、限定公開をしています。<br>ほとんど同人誌即売会などのイベントには出店しません、<br>サークルとして活動するのはネットのイベントのみです。<br>2024/2月発足。<p>
+</div>
+
+<script>
+  // ウェブサイトの表示
+  var websiteContent = document.querySelector('.website-content');
+  websiteContent.style.display = 'none';
+
+  // ロゴ画像のフェードアウト後、ウェブサイトを表示
+  setTimeout(function() {
+    var logoContainer = document.querySelector('.logo-container');
+    logoContainer.style.opacity = '0';
+    websiteContent.style.display = 'block';
+  }, 4000);
+</script>
+
+</body>
+</html>
